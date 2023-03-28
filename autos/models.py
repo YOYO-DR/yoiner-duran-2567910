@@ -2,10 +2,10 @@ from django.db import models
 from django.db.models.fields import *
 
 class Auto(models.Model):
-  marca = CharField(max_length=20,verbose_name='Marca')
-  nombre = CharField(max_length=30,verbose_name='Nombre')
-  modelo = IntegerField(verbose_name='Modelo')
-  color = CharField(max_length=20,verbose_name='Color')
+  marca = CharField(max_length=20,verbose_name='Marca',null=True,blank=True)
+  nombre = CharField(max_length=30,verbose_name='Nombre',null=True,blank=True)
+  modelo = IntegerField(verbose_name='Modelo',null=True,blank=True)
+  color = CharField(max_length=20,verbose_name='Color',null=True,blank=True)
   
   class Meta:
     db_table = 'auto'
@@ -13,11 +13,11 @@ class Auto(models.Model):
     return f'Marca {self.marca} - Nombre {self.nombre}'
 
 class Clientes(models.Model):
-  nombre = CharField(max_length=20)
-  apellido = CharField(max_length=30)
-  direccion = CharField(max_length=200)
-  email = EmailField(max_length=100)
-  telefono = CharField(max_length=20)
+  nombre = CharField(max_length=20,null=True,blank=True)
+  apellido = CharField(max_length=30,null=True,blank=True)
+  direccion = CharField(max_length=200,null=True,blank=True)
+  email = EmailField(max_length=100,null=True,blank=True)
+  telefono = CharField(max_length=20,null=True,blank=True)
   
   class Meta:
     db_table='cliente'

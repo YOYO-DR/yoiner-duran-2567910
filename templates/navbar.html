@@ -25,7 +25,17 @@
         <li class="nav-item">
           <a class="nav-link" href="{% url 'clientes' %}">Clientes</a>
         </li>
-
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Ingresar Datos
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{% url 'ingresarautos' %}">Ingresar Autos</a></li>
+            <li><a class="dropdown-item" href="{% url 'ingresarclientes' %}">Ingresar Clientes</a></li>
+            
+          </ul>
+        </li>
+        
         
       </ul>
     </div>

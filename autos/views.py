@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect,get_object_or_404
+from .forms import *
 from .models import *
 
 def principal(request):
@@ -22,8 +23,37 @@ def clientes(request):
   }
   return render(request,'clientes.html', context)
 
-# def ingresarAutos(request):
-#   pass
+def ingresarAutos(request):
+  if request.method == 'GET':
+    context= {
+      'titulo':'Ingresar Autos',
+      'form':AutoForm
+    }
+    return render(request,'ingresarautos.html',context)
+  else:
+    form = AutoForm(request.POST)
+    if form.is_valid():
+      form.save()
+      return redirect('autos')
 
-# def ingresarAutos(request):
-#   pass
+def ingresarClientes(request):
+  if request.method == 'GET':
+    context= {
+      'titulo':'Ingresar Clientes',
+      'form':ClienteForm
+    }
+    return render(request,'ingresarclientes.html',context)
+  else:
+    form = ClienteForm(request.POST)
+    if form.is_valid():
+      form.save()
+      return redirect('clientes')
+
+def eliminarAutos(request,id):
+  auto=get_object_or_404(Auto,pk=id)
+  auto.delete()
+  return redirect('autos')
+def eliminarClientes(request,id):
+  cliente=get_object_or_404(Clientes,pk=id)
+  cliente.delete()
+  return redirect('clientes')
