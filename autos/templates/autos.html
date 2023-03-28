@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+  <table class="table table-dark table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Marca</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Modelo</th>
+        <th scope="col">Color</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for auto in autos %}
+        <tr>
+          <td scope="col">{{ auto.id }}</td>
+          <td scope="col">{{ auto.marca }}</td>
+          <td scope="col">{{ auto.nombre }}</td>
+          <td scope="col">{{ auto.modelo }}</td>
+          <td scope="col">{{ auto.color }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

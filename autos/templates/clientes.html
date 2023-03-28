@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+  <table class="table table-dark table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Apellido</th>
+        <th scope="col">Dirección</th>
+        <th scope="col">Email</th>
+        <th scope="col">Telefono</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for cliente in clientes %}
+        <tr>
+          <td scope="col">{{ cliente.id }}</td>
+          <td scope="col">{{ cliente.nombre }}</td>
+          <td scope="col">{{ cliente.apellido }}</td>
+          <td scope="col">{{ cliente.direccion }}</td>
+          <td scope="col">{{ cliente.email }}</td>
+          <td scope="col">{{ cliente.telefono }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
