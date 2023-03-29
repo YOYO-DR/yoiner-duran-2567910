@@ -8,9 +8,10 @@
     {% for field in form.visible_fields %}
       <label for="" class="form-label">
         {{ field.label }}
-        {{ field|add_class:'form-control' }}
+        {{ field|add_class:'form-control'|attr:'required' }}
       </label>
     {% endfor %}
     <button class="btn btn-success">Guardar</button>
+    <a href="{% url 'clientes' %}" class="btn btn-danger">Cancelar</a>
   </form>
 {% endblock %}

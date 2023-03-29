@@ -2,16 +2,16 @@
 {% load widget_tweaks %}
 {% block contenido %}
   <form method="post">
-    <h1>Ingresar autos</h1>
+    <h1>Actualizar el cliente {{cliente.nombre|title}}</h1>
     {% csrf_token %}
-
     {% for field in form.visible_fields %}
       <label for="" class="form-label">
         {{ field.label }}
         {{ field|add_class:'form-control'|attr:'required' }}
       </label>
     {% endfor %}
-    <button class="btn btn-success">Guardar</button>
-    <a href="{% url 'autos' %}" class="btn btn-danger">Cancelar</a>
+    <button class="btn btn-success">Actualizar</button>
+    <a href="{% url 'clientes' %}" class="btn btn-danger">Cancelar</a>
   </form>
 {% endblock %}
+

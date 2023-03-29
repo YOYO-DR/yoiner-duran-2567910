@@ -57,3 +57,35 @@ def eliminarClientes(request,id):
   cliente=get_object_or_404(Clientes,pk=id)
   cliente.delete()
   return redirect('clientes')
+
+def actualizarAuto(request,id):
+  auto = get_object_or_404(Auto,pk=id)
+  if request.method == 'GET':
+    form = AutoForm(instance=auto)
+    context = {
+      'titulo':'Actualizar auto',
+      'auto':auto,
+      'form':form
+    }
+    return render(request,'actualizarautos.html',context)
+  if request.method == 'POST':
+    form = AutoForm(request.POST,instance=auto)
+    if form.is_valid():
+      form.save()
+      return redirect('autos')
+
+def actualizarCliente(request,id):
+  cliente = get_object_or_404(Clientes,pk=id)
+  if request.method == 'GET':
+    form = ClienteForm(instance=cliente)
+    context = {
+      'titulo':'Actualizar cliente',
+      'cliente':cliente,
+      'form':form
+    }
+    return render(request,'actualizarclientes.html',context)
+  if request.method == 'POST':
+    form = ClienteForm(request.POST,instance=cliente)
+    if form.is_valid():
+      form.save()
+      return redirect('clientes')

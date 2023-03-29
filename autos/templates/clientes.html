@@ -2,7 +2,8 @@
 
 {% block contenido %}
 <h1 class="w-100 text-center">Lista de clientes</h1>
-  <table class="table table-dark table-hover">
+{% if clientes %}
+<table class="table table-dark table-hover">
     <thead>
       <tr>
         <th scope="col">Id</th>
@@ -23,11 +24,18 @@
           <td scope="col">{{ cliente.direccion }}</td>
           <td scope="col">{{ cliente.email }}</td>
           <td scope="col">{{ cliente.telefono }}</td>
-          <td scope="col">
+          <td scope="col" style="width:25%;">
+            <a href="{% url 'actualizarcliente' cliente.id %}" class="btn btn-success">Actualizar</a>
             <a href="{% url 'eliminarclientes' cliente.id %}" class="btn btn-danger">Eliminar</a>
           </td>
         </tr>
       {% endfor %}
     </tbody>
   </table>
+  {% else %}
+  <h1 class="w-100 text-center h2">No hay datos</h1>
+{% endif %}
+
+  
+    
 {% endblock %}
